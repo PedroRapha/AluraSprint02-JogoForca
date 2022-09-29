@@ -4,12 +4,39 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	height: 100vh;
+	width: 100vw;
 }
 
 .logo-topo {
 	margin: 40px 0 0 84px;
 	height: 3em;
 	width: auto;
+}
+
+main {
+		display: flex;
+}
+
+.telaInicial {
+	flex-direction: column;
+	gap: 8px;
+	justify-content: center;
+	align-items: center;
+	width: 22%;
+	height: 22%;
+}
+
+.botao {
+	border-radius: 1em;
+	padding: 1em;
+}
+
+.telaNovaPalavra{
+	display: none;
+}
+
+.telaJogo {
+	display: none;
 }
 
 footer {
