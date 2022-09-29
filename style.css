@@ -3,8 +3,6 @@ body {
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
-	height: 100vh;
-	width: 100vw;
 }
 
 .logo-topo {
@@ -13,22 +11,30 @@ body {
 	width: auto;
 }
 
-main {
-		display: flex;
+.main {
+	height: 100%;
+	width: 100%;
 }
 
 .telaInicial {
-	flex-direction: column;
-	gap: 8px;
-	justify-content: center;
-	align-items: center;
-	width: 22%;
-	height: 22%;
+	left: 0;
+	right: 0;
+	margin: 27vh auto 0;
+	text-align: center;
+	width: 25%;
+	height: 25%;
 }
 
-.botao {
+.botaoTelaInicial {
+	margin: 0;
 	border-radius: 1em;
 	padding: 1em;
+	width: 85%;
+	height: 5em;
+}
+
+#adicionarNovaPalavra {
+	margin-top: 1em;
 }
 
 .telaNovaPalavra{
@@ -40,9 +46,13 @@ main {
 }
 
 footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto 10px;
 	padding-top: 10px;
 	font-size: 0.5em;
 	color: gray;
 	text-align: center;
-	margin-bottom: 10px;
 }

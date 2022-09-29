@@ -18,12 +18,17 @@
 	<header class="logo-header">
 			<h1 class="logo-topo"><img src="elements/logo.png" alt="logo da Alura"></h1>
 	</header>
-	<main>
-		<section class="telaInicial">
-			<input type="button" id="comecarAJogar" value="Começar a jogar" class="botao">
-			<input type="button" id="adicionarNovaPalavra" value="Adicionar nova palavra" class="botao">
-		</section>
-		<section class="telaNovaPalavra">
+	<main class="main">
+		<div class="telaInicial">
+			<div>
+				<button id="comecarAJogar" class="botaoTelaInicial">Começar a jogar</button>
+			</div>
+			<div>
+				<button id="adicionarNovaPalavra" class="botaoTelaInicial">Adicionar nova palavra</button>
+			</div>
+		</div>
+
+		<div class="telaNovaPalavra">
 			<textarea class="palavrasUsuario" placeholder="Digite uma palavra ou frase"></textarea>
 
 			<div class="avisoTamanhoPalavra">
@@ -32,8 +37,9 @@
 			</div>
 			<input type="button" id="salvarEContinuar" value="Salvar e continuar" class="botao">
 			<input type="button" id="cancelar" value="Cancelar" class="botao">
-		</section>
-		<section class="telaJogo">
+		</div>
+
+		<div class="telaJogo">
 			<canvas width="600" height="400"></canvas>
 			<script>
 				var tela = document.querySelector("canvas");
@@ -42,7 +48,7 @@
 				pincel.fillStyle = 'gray';
 				pincel.fillRect(0,0,600,400)
 			</script>
-		</section>
+		</div>
 	</main>
 	<footer>
 		<p class="texto-rodape">Designed by Alura - Developed by Pedro Raphael Paiva</p>
