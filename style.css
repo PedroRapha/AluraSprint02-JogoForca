@@ -1,0 +1,21 @@
+body {
+	background: #E5E5E5;
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 400;
+	height: 100vh;
+}
+
+.logo-topo {
+	margin: 40px 0 0 84px;
+	height: 3em;
+	width: auto;
+}
+
+footer {
+	padding-top: 10px;
+	font-size: 0.5em;
+	color: gray;
+	text-align: center;
+	margin-bottom: 10px;
+}

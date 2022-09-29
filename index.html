@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="pt-br">
+<meta name="viewport" content="width = device-width">
+
+<head>
+	<title>Jogo da Forca Alura ONE</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header class="logo-header">
+			<h1 class="logo-topo"><img src="elements/logo.png" alt="logo da Alura"></h1>
+	</header>
+	<main>
+		<section class="telaInicial">
+			<input type="button" id="comecarAJogar" value="Começar a jogar" class="botao">
+			<input type="button" id="adicionarNovaPalavra" value="Adicionar nova palavra" class="botao">
+		</section>
+		<section class="telaNovaPalavra">
+			<textarea class="palavrasUsuario" placeholder="Digite uma palavra ou frase"></textarea>
+
+			<div class="avisoTamanhoPalavra">
+			<img src="elements/exclamacao.png">
+				<p>Apenas letras minúsculas e sem acento.</p>
+			</div>
+			<input type="button" id="salvarEContinuar" value="Salvar e continuar" class="botao">
+			<input type="button" id="cancelar" value="Cancelar" class="botao">
+		</section>
+		<section class="telaJogo">
+			<canvas width="600" height="400"></canvas>
+			<script>
+				var tela = document.querySelector("canvas");
+				var pincel = tela.getContext('2d');
+
+				pincel.fillStyle = 'gray';
+				pincel.fillRect(0,0,600,400)
+			</script>
+		</section>
+	</main>
+	<footer>
+		<p class="texto-rodape">Designed by Alura - Developed by Pedro Raphael Paiva</p>
+	</footer>
+</body>
