@@ -8,7 +8,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet" class="myFont">
 
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="style.css">
@@ -43,20 +43,104 @@
 					</div>
 
 					<div class="botoesTelaNovaPalavra">
-						<button id="salvarEContinuar" class="botaoNovaPalavra">Salvar e continuar</button><button id="cancelar" class="botaoNovaPalavra">Cancelar</button>
+						<button id="salvarEContinuar" class="botaoGeral">Salvar e continuar</button><button id="cancelar" class="botaoGeral">Cancelar</button>
 					</div>
 				</div>
 			</div>
 
 			<div class="telaJogo">
-				<canvas width="600" height="400"></canvas>
-				<script>
-					var tela = document.querySelector("canvas");
-					var pincel = tela.getContext('2d');
+				<div class="boxTelaJogo">
+					<div class="botoesTelaNovaPalavra">
+						<button id="novoJogo" class="botaoGeral">Novo jogo</button><button id="desistir" class="botaoGeral">Desistir</button>
+					</div>
+					<div class="canvasEJavascript">
+						<canvas width="480" height="550"></canvas>
+						<script>
+							//Funcionalidades do Site
 
-					pincel.fillStyle = 'gray';
-					pincel.fillRect(0,0,600,400)
-				</script>
+
+
+							//JOGO EM SI
+							function sorteioPosicao() {
+								return Math.floor(Math.random()*numeroDePalavras);
+							}
+							function escolherPalavraSecreta() {
+								var sorteio = sorteioPosicao();
+								return todasPalavras[sorteio];
+							}
+							
+							var todasPalavras = ["AMARELO","AZUL","BRANCO","LARANJA","MARROM","PRETO","ROSA","ROXO","VERDE","VERMELHO"];
+							var numeroDePalavras = todasPalavras.length
+
+							var botaoNovoJogo = document.querySelector("#novoJogo");
+							//botaoNovoJogo.onclick = escolherPalavraSecreta;
+							var palavraSorteada = escolherPalavraSecreta();
+							console.log(palavraSorteada)
+
+
+							var tela = document.querySelector("canvas");
+							var pincel = tela.getContext('2d');
+							
+							pincel.fillStyle = '#E5E5E5';
+							pincel.fillRect(0,0,480,650);
+							pincel.fillStyle = "#0A3871";
+							pincel.strokeStyle = "#0A3871";
+							pincel.lineWidth = 3;
+
+							//linhas letras
+							
+							pincel.fillRect(5,450,50,3);
+							pincel.fillRect(65,450,50,3);
+							pincel.fillRect(125,450,50,3);
+							pincel.fillRect(185,450,50,3);
+							pincel.fillRect(245,450,50,3);
+							pincel.fillRect(305,450,50,3);
+							pincel.fillRect(365,450,50,3);
+							pincel.fillRect(425,450,50,3);
+
+							//Letras placeholder temporário
+							pincel.font = "48px Arial";
+							pincel.fillText("P",18,425);
+							pincel.fillText("E",76,425);
+							pincel.fillText("C",135,425);
+							pincel.fillText("U",195,425);
+							pincel.fillText("L",257,425);
+							pincel.fillText("I",320,425);
+							pincel.fillText("A",375,425);
+							pincel.fillText("R",435,425);
+
+							//desenho forca
+							//base
+							pincel.fillRect(90,300,300,3);
+							pincel.fillRect(150,0,3,300);
+							pincel.fillRect(150,0,180,3);
+							pincel.fillRect(330,0,3,30);
+							//cabeça
+							pincel.beginPath();
+							pincel.arc(330,55,25,0,2*Math.PI);
+							pincel.stroke();
+							//corpo
+							pincel.fillRect(329,80,3,140);
+							//braços
+							pincel.beginPath();
+							pincel.moveTo(280,130);
+							//braço direito
+							pincel.lineTo(330,80);
+							//braço esquerdo
+							pincel.lineTo(380,130);
+							pincel.stroke();
+							//pernas
+							pincel.beginPath();
+							pincel.moveTo(280,270);
+							//perna direita
+							pincel.lineTo(330,220);
+							//perna esquerda
+							pincel.lineTo(380,270);
+							pincel.stroke();
+
+						</script>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -83,8 +83,8 @@ body {
 
 /* Configurações da Tela de Novas Palavras*/
 
-.telaNovaPalavra{
-	display: flex;
+.telaNovaPalavra {
+	display: none;
 }
 
 .boxTelaNovaPalavra {
@@ -93,10 +93,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-
-.textareaNovaPalavra {
-
 }
 
 textarea {
@@ -128,7 +124,7 @@ textarea {
 	column-gap: 1.5em;
 }
 
-.botaoNovaPalavra {
+.botaoGeral {
 	border-radius: 1em;
 	padding: 1em;
 	width: 23.25vw;
@@ -177,7 +173,55 @@ textarea {
 /* Configurações da Tela de Jogo */
 
 .telaJogo {
-	display: none;
+	display: flex;
+}
+
+.boxTelaJogo {
+	display: flex;
+	width: 100vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.canvasEJavascript {
+	display: flex;
+	order: -1;
+}
+
+#novoJogo {
+	background-color: #0A3871;
+	color: #FFFFFF;
+	transition: 0.5s;
+}
+
+#novoJogo:hover {
+	background: #0A2771;
+	cursor: pointer;
+}
+
+#novoJogo:active {
+	background: #0A1671;
+	box-shadow: inset 3px 3px 0 2px #020A46;
+	cursor: pointer;
+	transition: 0s;
+}
+
+#desistir {
+	background-color: #D8DFE8;
+	color: #0A3871;
+}
+
+#desistir:hover {
+	background: #E5E5E5;
+	cursor: pointer;
+}
+
+#desistir:active {
+	background: white;
+	box-shadow: inset 3px 3px 0 2px #E5E5E5;
+	cursor: pointer;
+	transition: 0s;
 }
 
 /* Configurações do rodapé */
