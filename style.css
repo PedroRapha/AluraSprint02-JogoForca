@@ -18,11 +18,13 @@ body {
 	width: 100vw;
 }
 
+/* Configurações da Tela Inicial */
+
 .telaInicial {
-	display: flex;
+	display: none;
 }
 
-.botoesTelaInicial {
+.boxTelaInicial {
 	display: flex;
 	width: 100vw;
 	flex-direction: column;
@@ -57,7 +59,7 @@ body {
 
 #comecarAJogar:active {
 	background: #0A1671;
-	box-shadow: inset 3px 3px 0 2px #050460;
+	box-shadow: inset 3px 3px 0 2px #020A46;
 	cursor: pointer;
 	transition: 0s;
 }
@@ -79,13 +81,106 @@ body {
 	transition: 0s;
 }
 
+/* Configurações da Tela de Novas Palavras*/
+
 .telaNovaPalavra{
-	display: none;
+	display: flex;
 }
+
+.boxTelaNovaPalavra {
+	display: flex;
+	width: 100vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.textareaNovaPalavra {
+
+}
+
+textarea {
+	height: 40vh;
+	width: 48vw;
+	background-color: #E5E5E5;
+	border-color: #E5E5E5;
+	padding: 0.5em;
+	border-radius: 1em;
+	font-size: 1.5em;
+	color: #495057;
+	resize: none;
+}
+
+.avisoTamanhoPalavra {
+	display: flex;
+	width: 100%;
+	column-gap: 0.5em;
+	align-items: center;
+	margin-left: 1em;
+	font-size: 0.7em;
+	font-weight: 200;
+}
+
+.botoesTelaNovaPalavra {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: 1.5em;
+}
+
+.botaoNovaPalavra {
+	border-radius: 1em;
+	padding: 1em;
+	width: 23.25vw;
+	height: 4em;
+	min-height: 2em;
+	min-width: 15em;
+	border-width: 1px;
+	border-color: #0A3871;
+}
+
+#salvarEContinuar {
+	background-color: #0A3871;
+	color: #FFFFFF;
+	transition: 0.5s;
+}
+
+#salvarEContinuar:hover {
+	background: #0A2771;
+	cursor: pointer;
+}
+
+#salvarEContinuar:active {
+	background: #0A1671;
+	box-shadow: inset 3px 3px 0 2px #020A46;
+	cursor: pointer;
+	transition: 0s;
+}
+
+#cancelar {
+	background-color: #D8DFE8;
+	color: #0A3871;
+}
+
+#cancelar:hover {
+	background: #E5E5E5;
+	cursor: pointer;
+}
+
+#cancelar:active {
+	background: white;
+	box-shadow: inset 3px 3px 0 2px #E5E5E5;
+	cursor: pointer;
+	transition: 0s;
+}
+
+/* Configurações da Tela de Jogo */
 
 .telaJogo {
 	display: none;
 }
+
+/* Configurações do rodapé */
 
 footer {
 	position: absolute;

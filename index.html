@@ -21,7 +21,7 @@
 	<main>
 		<div class="main">
 			<div class="telaInicial">
-				<div class="botoesTelaInicial">
+				<div class="boxTelaInicial">
 					<div>
 						<button id="comecarAJogar" class="botaoTelaInicial">Começar a jogar</button>
 					</div>
@@ -33,14 +33,19 @@
 			</div>
 
 			<div class="telaNovaPalavra">
-				<textarea class="palavrasUsuario" placeholder="Digite uma palavra ou frase"></textarea>
+				<div class="boxTelaNovaPalavra">
+					<div class="textareaNovaPalavra">
+						<textarea class="palavrasUsuario" placeholder="Digite uma palavra ou frase"></textarea>
+						<div class="avisoTamanhoPalavra">
+							<img src="elements/exclamacao.png">
+							<p>Máx. de 8 letras</p>
+						</div>
+					</div>
 
-				<div class="avisoTamanhoPalavra">
-				<img src="elements/exclamacao.png">
-					<p>Apenas letras minúsculas e sem acento.</p>
+					<div class="botoesTelaNovaPalavra">
+						<button id="salvarEContinuar" class="botaoNovaPalavra">Salvar e continuar</button><button id="cancelar" class="botaoNovaPalavra">Cancelar</button>
+					</div>
 				</div>
-				<button id="salvarEContinuar">Salvar e continuar</button>
-				<button id="cancelar">Cancelar</button>
 			</div>
 
 			<div class="telaJogo">
