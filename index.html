@@ -106,8 +106,7 @@
 
 							function desenhaLetrasAcertos(evento) {
 								var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
-								var acertou = false;
-
+								
 								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
 									if(evento.keyCode == palavraEmCodigo[posicao]) {
 										pincel.fillText(palavraLetrasSeparadas[posicao].toUpperCase(),comecoTraco+(60*posicao),425);
@@ -116,24 +115,41 @@
 							}
 
 							function desenhaLetrasErros() {
+								//não funciona ainda não sei por que
+								var comecoTraco = (480 - (palavraSorteada.length*30 + (palavraSorteada.length-1)*5))/2 + 5;
 
+								pincel.font = "24px Sans-Serif";
+								
+								pincel.fillText(alfabeto[20].toUpperCase(),comecoTraco+(35*posicao),475);
+
+								pincel.font = "48px Sans-Serif";
 							}
 
 							function desenhaEnforcado() {
 
 							}
 
-							function reconheceTeclado(evento) {	
+							function reconheceTeclado(evento) {
+								//comentários não estavam funcionando não sei por que
+								//var letraADesenhar = evento.keyCode - a;
+
 								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
 									if (evento.keyCode == palavraEmCodigo[posicao]) {
+										//achou = true;
+										//numeroDeAcertos++;
+										//alert("acertou!");
 										desenhaLetrasAcertos();
-										numeroDeAcertos++;
 									}
 								}
+
+								/*if(achou == false) {
+									alert("errou");
+									numeroDeErros++;
+								}*/
 							}
 							
 							var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
-							var numeroDePalavras = todasPalavras.length
+							var numeroDePalavras = todasPalavras.length;
 
 							var botaoNovoJogo = document.querySelector("#novoJogo");
 							//botaoNovoJogo.onclick = escolherPalavraSecreta;
@@ -159,6 +175,7 @@
 							var desenha = desenhaTracinhos();
 							var palavraEmCodigo = [];
 							var converter = convertePalavraEmCodigo();
+							var achou = false;
 							var numeroDeAcertos = 0;
 							var numeroDeErros = 0;
 							document.onkeydown = desenhaLetrasAcertos;
@@ -166,6 +183,7 @@
 							console.log(palavraEmCodigo);
 							console.log(numeroDeAcertos);
 							console.log(numeroDeErros);
+							console.log(achou)
 
 							
 
