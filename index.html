@@ -67,6 +67,7 @@
 								pincel.fillStyle = "#0A3871";
 								pincel.strokeStyle = "#0A3871";
 								pincel.lineWidth = 3;
+								pincel.font = "48px Sans-Serif";
 								pincel.fillRect(90,300,300,3);
 								pincel.fillRect(150,0,3,300);
 								pincel.fillRect(150,0,180,3);
@@ -86,7 +87,6 @@
 								var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2;
 
 								for (posicao = 1; posicao <= palavraSorteada.length; posicao++) {
-									pincel.fillRect(comecoTraco,450,50,3);
 									pincel.fillRect(comecoTraco+(60*(posicao-1)),450,50,3);
 								}
 							}
@@ -104,8 +104,15 @@
 								}
 							}
 
-							function desenhaLetrasAcertos() {
+							function desenhaLetrasAcertos(evento) {
+								var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
+								var acertou = false;
 
+								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
+									if(evento.keyCode == palavraEmCodigo[posicao]) {
+										pincel.fillText(palavraLetrasSeparadas[posicao].toUpperCase(),comecoTraco+(60*posicao),425);
+									}
+								}
 							}
 
 							function desenhaLetrasErros() {
@@ -119,7 +126,8 @@
 							function reconheceTeclado(evento) {	
 								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
 									if (evento.keyCode == palavraEmCodigo[posicao]) {
-										alert("Acertou");
+										desenhaLetrasAcertos();
+										numeroDeAcertos++;
 									}
 								}
 							}
@@ -151,20 +159,15 @@
 							var desenha = desenhaTracinhos();
 							var palavraEmCodigo = [];
 							var converter = convertePalavraEmCodigo();
-							document.onkeydown = reconheceTeclado;
+							var numeroDeAcertos = 0;
+							var numeroDeErros = 0;
+							document.onkeydown = desenhaLetrasAcertos;
 							console.log(palavraSorteada);
 							console.log(palavraEmCodigo);
+							console.log(numeroDeAcertos);
+							console.log(numeroDeErros);
 
-							//Letras placeholder temporário
-							pincel.font = "48px Sans-Serif";
-							pincel.fillText("P",15,425);
-							pincel.fillText("E",75,425);
-							pincel.fillText("C",135,425);
-							pincel.fillText("U",195,425);
-							pincel.fillText("L",255,425);
-							pincel.fillText("I",315,425);
-							pincel.fillText("A",375,425);
-							pincel.fillText("R",435,425);
+							
 
 							//desenho forca
 							//cabeça
