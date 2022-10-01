@@ -6,9 +6,7 @@
 <head>
 	<title>Jogo da Forca Alura ONE</title>
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet" class="myFont">
+	
 
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="style.css">
@@ -56,6 +54,13 @@
 					<div class="canvasEJavascript">
 						<canvas width="480" height="550"></canvas>
 						<script>
+							/*
+							Adicionar isto ao head quando tiver conexão com internet
+
+							<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet" class="myFont">
+	*/
 							//Funcionalidades do Site
 
 
@@ -79,6 +84,19 @@
 									console.log(posicao)
 								}
 							}
+
+							function reconheceTeclado(evento) {
+								var codigoTeclado = [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+								var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+								
+								for (posicao=0;posicao<26;posicao++) {
+									if (evento.keyCode == codigoTeclado[posicao]) {
+										alert("tecla " + alfabeto[posicao]);
+										break;
+									}
+								}
+								
+							}
 							
 							var todasPalavras = ["AMARELO","AZUL","BRANCO","LARANJA","MARROM","PRETO","ROSA","ROXO","VERDE","VERMELHO"];
 							var numeroDePalavras = todasPalavras.length
@@ -97,20 +115,12 @@
 							pincel.strokeStyle = "#0A3871";
 							pincel.lineWidth = 3;
 
+							var a=65; var b=66; var c=67; var d=68; var e=69; var f=70; var g=71; var h=72; var i=73; var j=74; var k=75; var l=76; var m=77; var n=78; var o=79; var p=80; var q=81; var r=82; var s=83; var t=84; var u=85; var v=86; var w=87; var x=88; var y=89; var z=90;
+
 							var palavraSorteada = escolherPalavraSecreta();
 							var desenha = desenhaTracinhos();
+							document.onkeydown = reconheceTeclado;
 							console.log(palavraSorteada)
-
-							//linhas letras
-							
-							/*pincel.fillRect(5,450,50,3);
-							pincel.fillRect(65,450,50,3);
-							pincel.fillRect(125,450,50,3);
-							pincel.fillRect(185,450,50,3);
-							pincel.fillRect(245,450,50,3);
-							pincel.fillRect(305,450,50,3);
-							pincel.fillRect(365,450,50,3);
-							pincel.fillRect(425,450,50,3);*/
 
 							//Letras placeholder temporário
 							pincel.font = "48px Arial";
