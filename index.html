@@ -6,7 +6,9 @@
 <head>
 	<title>Jogo da Forca Alura ONE</title>
 
-	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet" class="myFont">
 
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="style.css">
@@ -54,13 +56,6 @@
 					<div class="canvasEJavascript">
 						<canvas width="480" height="550"></canvas>
 						<script>
-							/*
-							Adicionar isto ao head quando tiver conexão com internet
-
-							<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet" class="myFont">
-	*/
 							//Funcionalidades do Site
 
 
@@ -81,24 +76,31 @@
 								for (posicao = 1; posicao <= palavraSorteada.length; posicao++) {
 									pincel.fillRect(comecoTraco,450,50,3);
 									pincel.fillRect(comecoTraco+(60*(posicao-1)),450,50,3);
-									console.log(posicao)
 								}
 							}
 
-							function reconheceTeclado(evento) {
-								var codigoTeclado = [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
-								var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+							function convertePalavraEmCodigo() {
+								for (posicao=0; posicao<=palavraLetrasSeparadas.length;posicao++) {
 								
-								for (posicao=0;posicao<26;posicao++) {
-									if (evento.keyCode == codigoTeclado[posicao]) {
-										alert("tecla " + alfabeto[posicao]);
-										break;
+									for (var alfa = 0; alfa < 26; alfa++) {
+										if (alfabeto[alfa] == palavraLetrasSeparadas[posicao]) {
+											
+											palavraEmCodigo.push(codigoTeclado[alfa])
+											break
+										}
 									}
 								}
-								
+							}
+
+							function reconheceTeclado(evento) {	
+								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
+									if (evento.keyCode == palavraEmCodigo[posicao]) {
+										alert("Acertou");
+									}
+								}	
 							}
 							
-							var todasPalavras = ["AMARELO","AZUL","BRANCO","LARANJA","MARROM","PRETO","ROSA","ROXO","VERDE","VERMELHO"];
+							var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
 							var numeroDePalavras = todasPalavras.length
 
 							var botaoNovoJogo = document.querySelector("#novoJogo");
@@ -116,11 +118,17 @@
 							pincel.lineWidth = 3;
 
 							var a=65; var b=66; var c=67; var d=68; var e=69; var f=70; var g=71; var h=72; var i=73; var j=74; var k=75; var l=76; var m=77; var n=78; var o=79; var p=80; var q=81; var r=82; var s=83; var t=84; var u=85; var v=86; var w=87; var x=88; var y=89; var z=90;
+							var codigoTeclado = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
+							var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 							var palavraSorteada = escolherPalavraSecreta();
+							var palavraLetrasSeparadas = palavraSorteada.split("");
 							var desenha = desenhaTracinhos();
+							var palavraEmCodigo = [];
+							var converter = convertePalavraEmCodigo();
 							document.onkeydown = reconheceTeclado;
-							console.log(palavraSorteada)
+							console.log(palavraSorteada);
+							console.log(palavraEmCodigo);
 
 							//Letras placeholder temporário
 							pincel.font = "48px Arial";
