@@ -61,6 +61,18 @@
 
 
 							//JOGO EM SI
+							function limpaForca() {
+								pincel.fillStyle = '#E5E5E5';
+								pincel.fillRect(0,0,480,650);
+								pincel.fillStyle = "#0A3871";
+								pincel.strokeStyle = "#0A3871";
+								pincel.lineWidth = 3;
+								pincel.fillRect(90,300,300,3);
+								pincel.fillRect(150,0,3,300);
+								pincel.fillRect(150,0,180,3);
+								pincel.fillRect(330,0,3,30);
+							}
+
 							function sorteioPosicao() {
 								return Math.floor(Math.random()*numeroDePalavras);
 							}
@@ -92,12 +104,24 @@
 								}
 							}
 
+							function desenhaLetrasAcertos() {
+
+							}
+
+							function desenhaLetrasErros() {
+
+							}
+
+							function desenhaEnforcado() {
+
+							}
+
 							function reconheceTeclado(evento) {	
 								for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
 									if (evento.keyCode == palavraEmCodigo[posicao]) {
 										alert("Acertou");
 									}
-								}	
+								}
 							}
 							
 							var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
@@ -121,6 +145,7 @@
 							var codigoTeclado = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
 							var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
+							var comecaJogo = limpaForca();
 							var palavraSorteada = escolherPalavraSecreta();
 							var palavraLetrasSeparadas = palavraSorteada.split("");
 							var desenha = desenhaTracinhos();
@@ -131,22 +156,17 @@
 							console.log(palavraEmCodigo);
 
 							//Letras placeholder temporário
-							pincel.font = "48px Arial";
-							pincel.fillText("P",18,425);
-							pincel.fillText("E",76,425);
+							pincel.font = "48px Sans-Serif";
+							pincel.fillText("P",15,425);
+							pincel.fillText("E",75,425);
 							pincel.fillText("C",135,425);
 							pincel.fillText("U",195,425);
-							pincel.fillText("L",257,425);
-							pincel.fillText("I",320,425);
+							pincel.fillText("L",255,425);
+							pincel.fillText("I",315,425);
 							pincel.fillText("A",375,425);
 							pincel.fillText("R",435,425);
 
 							//desenho forca
-							//base
-							pincel.fillRect(90,300,300,3);
-							pincel.fillRect(150,0,3,300);
-							pincel.fillRect(150,0,180,3);
-							pincel.fillRect(330,0,3,30);
 							//cabeça
 							pincel.beginPath();
 							pincel.arc(330,55,25,0,2*Math.PI);
