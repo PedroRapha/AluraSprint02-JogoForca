@@ -64,9 +64,20 @@
 							function sorteioPosicao() {
 								return Math.floor(Math.random()*numeroDePalavras);
 							}
+
 							function escolherPalavraSecreta() {
 								var sorteio = sorteioPosicao();
 								return todasPalavras[sorteio];
+							}
+
+							function desenhaTracinhos() {
+								var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2;
+
+								for (posicao = 1; posicao <= palavraSorteada.length; posicao++) {
+									pincel.fillRect(comecoTraco,450,50,3);
+									pincel.fillRect(comecoTraco+(60*(posicao-1)),450,50,3);
+									console.log(posicao)
+								}
 							}
 							
 							var todasPalavras = ["AMARELO","AZUL","BRANCO","LARANJA","MARROM","PRETO","ROSA","ROXO","VERDE","VERMELHO"];
@@ -74,8 +85,7 @@
 
 							var botaoNovoJogo = document.querySelector("#novoJogo");
 							//botaoNovoJogo.onclick = escolherPalavraSecreta;
-							var palavraSorteada = escolherPalavraSecreta();
-							console.log(palavraSorteada)
+
 
 
 							var tela = document.querySelector("canvas");
@@ -87,16 +97,20 @@
 							pincel.strokeStyle = "#0A3871";
 							pincel.lineWidth = 3;
 
+							var palavraSorteada = escolherPalavraSecreta();
+							var desenha = desenhaTracinhos();
+							console.log(palavraSorteada)
+
 							//linhas letras
 							
-							pincel.fillRect(5,450,50,3);
+							/*pincel.fillRect(5,450,50,3);
 							pincel.fillRect(65,450,50,3);
 							pincel.fillRect(125,450,50,3);
 							pincel.fillRect(185,450,50,3);
 							pincel.fillRect(245,450,50,3);
 							pincel.fillRect(305,450,50,3);
 							pincel.fillRect(365,450,50,3);
-							pincel.fillRect(425,450,50,3);
+							pincel.fillRect(425,450,50,3);*/
 
 							//Letras placeholder temporário
 							pincel.font = "48px Arial";
