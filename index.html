@@ -115,12 +115,9 @@
 							}
 
 							function desenhaLetrasErros(evento) {
-								//não funciona ainda não sei por que
-								
 								var comecoTraco = 143;
 
 								pincel.font = "24px Sans-Serif";
-
 								for (posicao=0;posicao<codigoTeclado.length;posicao++) {
 									if (codigoTeclado[posicao]==evento.keyCode) {
 										pincel.fillText(alfabeto[posicao].toUpperCase(),comecoTraco+(35*numeroDeErros),475);
@@ -139,9 +136,6 @@
 							}
 
 							function reconheceTeclado(evento) {
-								//comentários não estavam funcionando não sei por que
-								//var letraADesenhar = evento.keyCode - a;
-
 								achou = false;
 
 								for (var posicaoTeclado=0;posicaoTeclado<codigoTecladoNumeros.length;posicaoTeclado++) {
@@ -152,6 +146,7 @@
 											if (evento.keyCode == palavraEmCodigo[posicao]) {
 												achou = true;
 												numeroDeAcertos++;
+												
 												desenhaLetrasAcertos(evento);
 											}
 										}
@@ -163,10 +158,8 @@
 									desenhaLetrasErros(evento);
 								}
 
-								/*if(achou == false) {
-									alert("errou");
-									numeroDeErros++;
-								}*/
+								//letrasDigitadas.push(codigoTeclado[palavraEmCodigo[posicao]]);
+								
 							}
 							
 							var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
@@ -198,6 +191,7 @@
 							var palavraEmCodigo = [];
 							var converter = convertePalavraEmCodigo();
 							var achou = false;
+							var letrasDigitadas = [];
 							var numeroDeAcertos = 0;
 							var numeroDeErros = 0;
 							document.onkeydown = reconheceTeclado;
@@ -205,7 +199,8 @@
 							console.log(palavraEmCodigo);
 							console.log(numeroDeAcertos);
 							console.log(numeroDeErros);
-							console.log(achou)
+							console.log(achou);
+							console.log(letrasDigitadas);
 
 							
 
