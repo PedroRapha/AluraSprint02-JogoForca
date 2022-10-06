@@ -121,7 +121,9 @@
 								for (posicao=0;posicao<codigoTeclado.length;posicao++) {
 									if (codigoTeclado[posicao]==evento.keyCode) {
 										pincel.fillText(alfabeto[posicao].toUpperCase(),comecoTraco+(35*numeroDeErros),475);
-										numeroDeErros++
+										letrasDigitadas.push(codigoTeclado[posicao]);
+										numeroDeErros++;
+										numeroDeLetrasDigitadas++;
 									}
 								}
 								pincel.font = "48px Sans-Serif";
@@ -146,6 +148,8 @@
 											if (evento.keyCode == palavraEmCodigo[posicao]) {
 												achou = true;
 												numeroDeAcertos++;
+												numeroDeLetrasDigitadas++;
+												letrasDigitadas.push(palavraEmCodigo[posicao]);
 												
 												desenhaLetrasAcertos(evento);
 											}
@@ -155,10 +159,11 @@
 								}
 
 								if(achou==false) {
+									alert("você errou!")
 									desenhaLetrasErros(evento);
 								}
 
-								//letrasDigitadas.push(codigoTeclado[palavraEmCodigo[posicao]]);
+								alert("Você digitou " + letrasDigitadas[(numeroDeLetrasDigitadas -1)]);
 								
 							}
 							
@@ -194,6 +199,7 @@
 							var letrasDigitadas = [];
 							var numeroDeAcertos = 0;
 							var numeroDeErros = 0;
+							var numeroDeLetrasDigitadas = 0;
 							document.onkeydown = reconheceTeclado;
 							console.log(palavraSorteada);
 							console.log(palavraEmCodigo);
