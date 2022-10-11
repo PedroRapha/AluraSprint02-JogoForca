@@ -118,29 +118,88 @@ function desenhaEnforcado() {
 }
 
 function reconheceTeclado(evento) {
-	achou = false;
-	letraRepetida = false;
+	if (fimDeJogo == false) {
+		achou = false;
+		letraRepetida = false;
 
-	reconheceLetraRepetida(evento);
+		reconheceLetraRepetida(evento);
 
-	for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
-		if (evento.keyCode == palavraEmCodigo[posicao] &&
+		for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
+			if (evento.keyCode == palavraEmCodigo[posicao] &&
+				letraRepetida == false) {
+				achou = true;
+				letrasDigitadas.push(palavraEmCodigo[posicao]);
+
+				desenhaLetrasAcertos(evento);
+			}
+		}
+
+		if(achou==false &&
 			letraRepetida == false) {
-			achou = true;
-			letrasDigitadas.push(palavraEmCodigo[posicao]);
-
-			desenhaLetrasAcertos(evento);
+			for (posicao=0; posicao<=codigoTeclado.length; posicao++) {
+				if (evento.keyCode == codigoTeclado[posicao]) {
+					alert("você errou!")
+				}
+			}
+			desenhaLetrasErros(evento);
 		}
 	}
+	verificaFimDeJogo();
+}
 
-    if(achou==false &&
-		letraRepetida == false) {
-        for (posicao=0; posicao<=codigoTeclado.length; posicao++) {
-            if (evento.keyCode == codigoTeclado[posicao]) {
-		        alert("você errou!")
-            }
-        }
-		desenhaLetrasErros(evento);
+function verificaFimDeJogo() {
+	if (fimDeJogo == false) {
+		//quando vence
+		if (numeroDeAcertos == palavraEmCodigo.length) {
+			fimDeJogo = true;
+			alert("Fim de Jogo!");
+			pincel.fillStyle = '#E5E5E5';
+			pincel.fillRect(0,0,480,333);
+			//cabeça
+			pincel.beginPath();
+			pincel.arc(240,55,25,0,2*Math.PI);
+			pincel.stroke();
+			//corpo
+			pincel.fillStyle = "#0A3871";
+			pincel.fillRect(239,80,3,140);
+			//braço direito
+			pincel.beginPath();
+			pincel.moveTo(190,50);
+			pincel.lineTo(240,100);
+			pincel.stroke();
+			//braço esquerdo
+			pincel.lineTo(290,50);
+			pincel.stroke();
+			//perna direita
+			pincel.beginPath();
+			pincel.moveTo(190,270);
+			pincel.lineTo(240,220);
+			pincel.stroke();
+			//perna esquerda
+			pincel.lineTo(290,270);
+			pincel.stroke();
+			//mensagem
+			pincel.font = "62px Sans-Serif";
+			pincel.fillStyle = "green";
+			pincel.fillText("VOCÊ VENCEU!",0,350);
+		}
+
+		//quando perde
+		if (numeroDeErros == 6) {
+			fimDeJogo = true;
+			alert("Fim de Jogo!");
+			//mensagem
+			pincel.font = "62px Sans-Serif";
+			pincel.fillStyle = "red";
+			pincel.fillText("Você perdeu :(",37,370);
+			//escreve palavra sorteada
+			pincel.fillStyle = '#E5E5E5';
+			pincel.fillRect(0,377,480,48);
+			pincel.fillStyle = "black";
+			for (var posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
+				pincel.fillText(palavraLetrasSeparadas[posicao].toUpperCase(),comecoTraco+(60*posicao),425);
+			}
+		}
 	}
 }
 
@@ -173,6 +232,7 @@ var palavraEmCodigo = [];
 var converter = convertePalavraEmCodigo();
 var achou = false;
 var letraRepetida = false;
+var fimDeJogo = false;
 var letrasDigitadas = [];
 var numeroDeAcertos = 0;
 var numeroDeErros = 0;
