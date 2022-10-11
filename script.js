@@ -68,6 +68,7 @@ function desenhaLetrasErros(evento) {
             letrasDigitadas.push(codigoTeclado[posicao]);
 			numeroDeErros++;
 			numeroDeLetrasDigitadas++;
+			desenhaEnforcado();
 		}
 	}
 	pincel.font = "48px Sans-Serif";
@@ -85,7 +86,35 @@ function reconheceLetraRepetida(evento) {
 }
 
 function desenhaEnforcado() {
-
+	if (numeroDeErros==1) {
+		//cabeça
+		pincel.beginPath();
+		pincel.arc(330,55,25,0,2*Math.PI);
+		pincel.stroke();
+	} else if (numeroDeErros==2) {
+		//corpo
+		pincel.fillRect(329,80,3,140);
+	} else if (numeroDeErros==3) {
+		//braço direito
+		pincel.beginPath();
+		pincel.moveTo(280,130);
+		pincel.lineTo(330,80);
+		pincel.stroke();
+	} else if (numeroDeErros==4) {
+		//braço esquerdo
+		pincel.lineTo(380,130);
+		pincel.stroke();
+	} else if (numeroDeErros==5) {
+		//perna direita
+		pincel.beginPath();
+		pincel.moveTo(280,270);
+		pincel.lineTo(330,220);
+		pincel.stroke();
+	} else if (numeroDeErros==6) {
+		//perna esquerda
+		pincel.lineTo(380,270);
+		pincel.stroke();
+	}
 }
 
 function reconheceTeclado(evento) {
@@ -102,9 +131,7 @@ function reconheceTeclado(evento) {
 
 			desenhaLetrasAcertos(evento);
 		}
-	} /*else if (codigoTecladoNumeros[posicao]== evento.keyCode) {
-		alert("Por favor, digite uma letra");
-	}*/
+	}
 
     if(achou==false &&
 		letraRepetida == false) {
@@ -157,29 +184,3 @@ console.log(numeroDeAcertos);
 console.log(numeroDeErros);
 console.log(achou);
 console.log(letrasDigitadas);
-
-
-
-//desenho forca
-//cabeça
-pincel.beginPath();
-pincel.arc(330,55,25,0,2*Math.PI);
-pincel.stroke();
-//corpo
-pincel.fillRect(329,80,3,140);
-//braços
-pincel.beginPath();
-pincel.moveTo(280,130);
-//braço direito
-pincel.lineTo(330,80);
-//braço esquerdo
-pincel.lineTo(380,130);
-pincel.stroke();
-//pernas
-pincel.beginPath();
-pincel.moveTo(280,270);
-//perna direita
-pincel.lineTo(330,220);
-//perna esquerda
-pincel.lineTo(380,270);
-pincel.stroke();
