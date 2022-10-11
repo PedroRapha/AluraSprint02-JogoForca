@@ -73,7 +73,14 @@ function desenhaLetrasErros(evento) {
 	pincel.font = "48px Sans-Serif";
 }
 
-function reconhecePalavraRepetida() {
+function reconheceLetraRepetida(evento) {
+	for (posicao=0;posicao<=letrasDigitadas.length;posicao++) {
+		if (evento.keyCode==letrasDigitadas[posicao]) {
+			letraRepetida = true;
+			alert("Você já digitou essa letra. Por favor, digite uma letra nova");
+			break;
+		}
+	}
 
 }
 
@@ -83,9 +90,13 @@ function desenhaEnforcado() {
 
 function reconheceTeclado(evento) {
 	achou = false;
+	letraRepetida = false;
+
+	reconheceLetraRepetida(evento);
 
 	for (posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
-		if (evento.keyCode == palavraEmCodigo[posicao]) {
+		if (evento.keyCode == palavraEmCodigo[posicao] &&
+			letraRepetida == false) {
 			achou = true;
 			letrasDigitadas.push(palavraEmCodigo[posicao]);
 
@@ -95,7 +106,8 @@ function reconheceTeclado(evento) {
 		alert("Por favor, digite uma letra");
 	}*/
 
-    if(achou==false) {
+    if(achou==false &&
+		letraRepetida == false) {
         for (posicao=0; posicao<=codigoTeclado.length; posicao++) {
             if (evento.keyCode == codigoTeclado[posicao]) {
 		        alert("você errou!")
@@ -103,8 +115,6 @@ function reconheceTeclado(evento) {
         }
 		desenhaLetrasErros(evento);
 	}
-
-    alert("Número de acertos " + numeroDeAcertos + ". Número de erros " + numeroDeErros);
 }
 
 var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
@@ -135,6 +145,7 @@ var desenha = desenhaTracinhos();
 var palavraEmCodigo = [];
 var converter = convertePalavraEmCodigo();
 var achou = false;
+var letraRepetida = false;
 var letrasDigitadas = [];
 var numeroDeAcertos = 0;
 var numeroDeErros = 0;
