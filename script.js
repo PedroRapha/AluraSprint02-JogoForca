@@ -191,13 +191,15 @@ function verificaFimDeJogo() {
 			//mensagem
 			pincel.font = "62px Sans-Serif";
 			pincel.fillStyle = "red";
-			pincel.fillText("Você perdeu :(",37,370);
+			pincel.fillText("Você perdeu :(",37,365);
 			//escreve palavra sorteada
 			pincel.fillStyle = '#E5E5E5';
 			pincel.fillRect(0,377,480,48);
+			pincel.font = "48px Sans-Serif";
 			pincel.fillStyle = "black";
-			for (var posicao=0; posicao<=palavraEmCodigo.length; posicao++) {
-				pincel.fillText(palavraLetrasSeparadas[posicao].toUpperCase(),comecoTraco+(60*posicao),425);
+			var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
+			for (var position = 0; position <= palavraLetrasSeparadas.length; position++) {
+				pincel.fillText(palavraLetrasSeparadas[position].toUpperCase(),comecoTraco+(60*position),430);
 			}
 		}
 	}
