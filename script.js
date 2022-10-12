@@ -1,7 +1,37 @@
 //Funcionalidades do Site
-var homeMode = false;
-var newWordMode = true;
+	//tela inicial
+function mudarParaTelaJogo(){
+	gameMode = true;
+	telaInicial.style.display = "none";
+	telaJogo.style.display = "flex";
+	limpaForca();
+}
+
+function mudarParaTelaAdicionar() {
+	telaInicial.style.display = "none";
+	telaNovaPalavra.style.display = "flex";
+}
+
 var gameMode = false;
+document.getElementById("telaInicial");
+document.getElementById("telaNovaPalavra")
+document.getElementById("telaJogo");
+var botaoComecar = document.querySelector("#comecarAJogar");
+var botaoNovaPalavra = document.querySelector("#adicionarNovaPalavra");
+
+botaoComecar.onclick = mudarParaTelaJogo;
+botaoNovaPalavra.onclick = mudarParaTelaAdicionar;
+
+	//tela Nova Palavra
+function voltarParaTelaInicial() {
+	telaNovaPalavra.style.display = "none";
+	telaInicial.style.display = "flex";
+}
+
+var botaoVoltar = document.querySelector("#voltar");
+botaoVoltar.onclick = voltarParaTelaInicial;
+
+	//funções de funcionalidade da tela de Jogo estão todos na funcionalidade do próprio jogo
 
 //Funcionalidades de adicionar palavra
 function verificaPalavraRepetida(){
@@ -68,6 +98,8 @@ function limpaForca() {
 	pincel.fillRect(150,0,3,300);
 	pincel.fillRect(150,0,180,3);
 	pincel.fillRect(330,0,3,30);
+
+	desenhaTracinhos();
 }
 
 function sorteioPosicao() {
@@ -270,21 +302,13 @@ var botaoNovoJogo = document.querySelector("#novoJogo");
 var tela = document.querySelector("canvas");
 var pincel = tela.getContext('2d');
 
-pincel.fillStyle = '#E5E5E5';
-pincel.fillRect(0,0,480,650);
-pincel.fillStyle = "#0A3871";
-pincel.strokeStyle = "#0A3871";
-pincel.lineWidth = 3;
-
 var a=65; var b=66; var c=67; var d=68; var e=69; var f=70; var g=71; var h=72; var i=73; var j=74; var k=75; var l=76; var m=77; var n=78; var o=79; var p=80; var q=81; var r=82; var s=83; var t=84; var u=85; var v=86; var w=87; var x=88; var y=89; var z=90;
 var codigoTeclado = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
 var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var codigoTecladoNumeros = [48,49,50,51,52,53,54,55,56,57]
 
-var comecaJogo = limpaForca();
 var palavraSorteada = escolherPalavraSecreta();
 var palavraLetrasSeparadas = palavraSorteada.split("");
-var desenha = desenhaTracinhos();
 var palavraEmCodigo = [];
 var converter = convertePalavraEmCodigo();
 var achou = false;

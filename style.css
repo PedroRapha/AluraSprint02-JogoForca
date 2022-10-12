@@ -20,8 +20,9 @@ body {
 
 /* Configurações da Tela Inicial */
 
-.telaInicial {
-	display: none;
+#telaInicial {
+	display: flex;
+	transition: 0.5s;
 }
 
 .boxTelaInicial {
@@ -83,8 +84,9 @@ body {
 
 /* Configurações da Tela de Novas Palavras*/
 
-.telaNovaPalavra {
-	display: flex;
+#telaNovaPalavra {
+	display: none;
+	transition: 0.5s;
 }
 
 .boxTelaNovaPalavra {
@@ -172,7 +174,7 @@ textarea {
 
 /* Configurações da Tela de Jogo */
 
-.telaJogo {
+#telaJogo {
 	display: none;
 	transition: 0.5s;
 }
