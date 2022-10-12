@@ -84,7 +84,7 @@ body {
 /* Configurações da Tela de Novas Palavras*/
 
 .telaNovaPalavra {
-	display: none;
+	display: flex;
 }
 
 .boxTelaNovaPalavra {
@@ -135,35 +135,35 @@ textarea {
 	border-color: #0A3871;
 }
 
-#salvarEContinuar {
+#adicionarPalavra {
 	background-color: #0A3871;
 	color: #FFFFFF;
 	transition: 0.5s;
 }
 
-#salvarEContinuar:hover {
+#adicionarPalavra:hover {
 	background: #0A2771;
 	cursor: pointer;
 }
 
-#salvarEContinuar:active {
+#adicionarPalavra:active {
 	background: #0A1671;
 	box-shadow: inset 3px 3px 0 2px #020A46;
 	cursor: pointer;
 	transition: 0s;
 }
 
-#cancelar {
+#voltar {
 	background-color: #D8DFE8;
 	color: #0A3871;
 }
 
-#cancelar:hover {
+#voltar:hover {
 	background: #E5E5E5;
 	cursor: pointer;
 }
 
-#cancelar:active {
+#voltar:active {
 	background: white;
 	box-shadow: inset 3px 3px 0 2px #E5E5E5;
 	cursor: pointer;
@@ -173,7 +173,8 @@ textarea {
 /* Configurações da Tela de Jogo */
 
 .telaJogo {
-	display: flex;
+	display: none;
+	transition: 0.5s;
 }
 
 .boxTelaJogo {

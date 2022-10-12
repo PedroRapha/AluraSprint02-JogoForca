@@ -1,8 +1,62 @@
 //Funcionalidades do Site
+var homeMode = false;
+var newWordMode = true;
+var gameMode = false;
 
+//Funcionalidades de adicionar palavra
+function verificaPalavraRepetida(){
+	palavraProibida = false;
 
+	for(var posicao = 0;posicao<=todasPalavras.length;posicao++){
+		if (input.value == todasPalavras[posicao]){
+			palavraProibida = true;
+			alert("Essa palavra já está no jogo! Por favor, adicione uma palavra nova");
+			input.value = "";
+			input.focus();
+		}
+	}
+}
 
-//JOGO EM SI
+function verificaSeTemSomenteLetras(str) {
+	return /^[a-zA-Z]+$/.test(str);
+	//lembrete: isto retorna true ou false, dependendo se o string tiver só letras não acentuadas ou tiver outros dígitos, respectivamente
+}
+
+function verificaTamanhoDaPalavra() {
+	if (palavraProibida == false){
+		if (input.value>8) {
+			palavraProibida = true;
+			alert("Por favor, digite uma palavra com 8 letras ou menos, sem acentos");
+			input.value = "";
+			input.focus();
+		}
+	}
+}
+
+function adicionaPalavraNova() {
+	var palavraDigitada = input.value;
+
+	verificaPalavraRepetida();
+	verificaSeTemSomenteLetras(palavraDigitada);
+	verificaTamanhoDaPalavra();
+	if (palavraProibida == false &&
+		verificaSeTemSomenteLetras(palavraDigitada) == true){
+		alert(input.value + " adicionada ao jogo")
+		todasPalavras.push(input.value);
+		input.value = "";
+		input.focus();
+	}else if (verificaSeTemSomenteLetras(palavraDigitada) == false) {
+		alert("Por favor, digite uma palavra com 8 letras ou menos, sem acentos, números ou caracteres especiais")
+	}
+}
+
+var input = document.querySelector(".palavrasUsuario");
+var palavraProibida = false;
+var botaoAdiciona = document.querySelector("#adicionarPalavra");
+
+botaoAdiciona.onclick = adicionaPalavraNova;
+
+//funcionalidades do JOGO EM SI
 function limpaForca() {
 	pincel.fillStyle = '#E5E5E5';
 	pincel.fillRect(0,0,480,650);
@@ -118,7 +172,8 @@ function desenhaEnforcado() {
 }
 
 function reconheceTeclado(evento) {
-	if (fimDeJogo == false) {
+	if (fimDeJogo == false &&
+		gameMode == true) {
 		achou = false;
 		letraRepetida = false;
 
@@ -241,8 +296,4 @@ var numeroDeErros = 0;
 var numeroDeLetrasDigitadas = 0;
 document.onkeydown = reconheceTeclado;
 console.log(palavraSorteada);
-console.log(palavraEmCodigo);
-console.log(numeroDeAcertos);
-console.log(numeroDeErros);
-console.log(achou);
-console.log(letrasDigitadas);
+console.log(todasPalavras);
