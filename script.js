@@ -103,6 +103,19 @@ function limpaForca() {
 	pincel.fillRect(150,0,180,3);
 	pincel.fillRect(330,0,3,30);
 
+	numeroDePalavras = todasPalavras.length;
+	palavraSorteada = escolherPalavraSecreta();
+	palavraLetrasSeparadas = palavraSorteada.split("");
+	palavraEmCodigo = [];
+	converter = convertePalavraEmCodigo();
+	achou = false;
+	letraRepetida = false;
+	fimDeJogo = false;
+	letrasDigitadas = [];
+	numeroDeAcertos = 0;
+	numeroDeErros = 0;
+	numeroDeLetrasDigitadas = 0;
+
 	desenhaTracinhos();
 }
 
@@ -235,7 +248,10 @@ function reconheceTeclado(evento) {
 			desenhaLetrasErros(evento);
 		}
 	}
-	verificaFimDeJogo();
+	
+	if(gameMode ==true) {
+		verificaFimDeJogo();
+	}
 }
 
 function verificaFimDeJogo() {
@@ -289,7 +305,7 @@ function verificaFimDeJogo() {
 			pincel.font = "48px Sans-Serif";
 			pincel.fillStyle = "black";
 			var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
-			for (var position = 0; position <= palavraLetrasSeparadas.length; position++) {
+			for (var position = 0; position < palavraLetrasSeparadas.length; position++) {
 				pincel.fillText(palavraLetrasSeparadas[position].toUpperCase(),comecoTraco+(60*position),430);
 			}
 		}
@@ -332,6 +348,8 @@ var botaoNovoJogo = document.querySelector("#novoJogo");
 var botaoDesistir = document.querySelector("#desistir");
 
 botaoDesistir.onclick = desistir;
+botaoNovoJogo.onclick = limpaForca;
+
 document.onkeydown = reconheceTeclado;
 console.log(palavraSorteada);
 console.log(todasPalavras);
