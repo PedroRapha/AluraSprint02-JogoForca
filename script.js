@@ -53,8 +53,9 @@ function verificaSeTemSomenteLetras(str) {
 }
 
 function verificaTamanhoDaPalavra() {
+	var tamanhoDaPalavra = input.value;
 	if (palavraProibida == false){
-		if (input.value>8) {
+		if (tamanhoDaPalavra.length>8) {
 			palavraProibida = true;
 			alert("Por favor, digite uma palavra com 8 letras ou menos, sem acentos");
 			input.value = "";
@@ -69,6 +70,7 @@ function adicionaPalavraNova() {
 	verificaPalavraRepetida();
 	verificaSeTemSomenteLetras(palavraDigitada);
 	verificaTamanhoDaPalavra();
+	
 	if (palavraProibida == false &&
 		verificaSeTemSomenteLetras(palavraDigitada) == true){
 		alert(input.value + " adicionada ao jogo")
@@ -77,6 +79,8 @@ function adicionaPalavraNova() {
 		input.focus();
 	}else if (verificaSeTemSomenteLetras(palavraDigitada) == false) {
 		alert("Por favor, digite uma palavra com 8 letras ou menos, sem acentos, números ou caracteres especiais")
+		input.value = "";
+		input.focus();
 	}
 }
 
@@ -272,7 +276,7 @@ function verificaFimDeJogo() {
 		}
 
 		//quando perde
-		if (numeroDeErros == 6) {
+		if (numeroDeErros >= 6) {
 			fimDeJogo = true;
 			alert("Fim de Jogo!");
 			//mensagem
@@ -292,12 +296,17 @@ function verificaFimDeJogo() {
 	}
 }
 
+function desistir(){
+	if (fimDeJogo == false) {
+		for(numeroDeErros;numeroDeErros<=6;numeroDeErros++){
+			desenhaEnforcado();
+		}
+	}
+	verificaFimDeJogo();
+}
+
 var todasPalavras = ["amarelo","azul","branco","laranja","marrom","preto","rosa","roxo","verde","vermelho"];
 var numeroDePalavras = todasPalavras.length;
-
-var botaoNovoJogo = document.querySelector("#novoJogo");
-
-//botaoNovoJogo.onclick = escolherPalavraSecreta;
 
 var tela = document.querySelector("canvas");
 var pincel = tela.getContext('2d');
@@ -318,6 +327,11 @@ var letrasDigitadas = [];
 var numeroDeAcertos = 0;
 var numeroDeErros = 0;
 var numeroDeLetrasDigitadas = 0;
+
+var botaoNovoJogo = document.querySelector("#novoJogo");
+var botaoDesistir = document.querySelector("#desistir");
+
+botaoDesistir.onclick = desistir;
 document.onkeydown = reconheceTeclado;
 console.log(palavraSorteada);
 console.log(todasPalavras);
