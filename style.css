@@ -12,6 +12,10 @@ body {
 	width: auto;
 }
 
+.logo-topo:hover {
+	cursor: pointer;
+}
+
 .main {
 	display: flex;
 	height: 100vh;
@@ -190,6 +194,24 @@ textarea {
 .canvasEJavascript {
 	display: flex;
 	order: -1;
+}
+
+#digitarLetra {
+/*	display: none;*/
+	background-color: #D8DFE8;
+	color: #0A3871;
+}
+
+#digitarLetra:hover {
+	background: #E5E5E5;
+	cursor: pointer;
+}
+
+#digitarLetra:active {
+	background: white;
+	box-shadow: inset 3px 3px 0 2px #E5E5E5;
+	cursor: pointer;
+	transition: 0s;
 }
 
 #novoJogo {

@@ -1,5 +1,12 @@
 //Funcionalidades do Site
 	//tela inicial
+function voltarParaTelaInicial() {
+	telaNovaPalavra.style.display = "none";
+	telaJogo.style.display = "none";
+	telaInicial.style.display = "flex";
+	gameMode = false;
+}
+
 function mudarParaTelaJogo(){
 	gameMode = true;
 	telaInicial.style.display = "none";
@@ -16,18 +23,15 @@ var gameMode = false;
 document.getElementById("telaInicial");
 document.getElementById("telaNovaPalavra")
 document.getElementById("telaJogo");
+var logoAlura = document.querySelector(".logo-topo");
 var botaoComecar = document.querySelector("#comecarAJogar");
 var botaoNovaPalavra = document.querySelector("#adicionarNovaPalavra");
 
+logoAlura.onclick = voltarParaTelaInicial;
 botaoComecar.onclick = mudarParaTelaJogo;
 botaoNovaPalavra.onclick = mudarParaTelaAdicionar;
 
 	//tela Nova Palavra
-function voltarParaTelaInicial() {
-	telaNovaPalavra.style.display = "none";
-	telaInicial.style.display = "flex";
-}
-
 var botaoVoltar = document.querySelector("#voltar");
 botaoVoltar.onclick = voltarParaTelaInicial;
 
@@ -144,6 +148,24 @@ function convertePalavraEmCodigo() {
 				break;
 			}
 		}
+	}
+}
+
+function digitarLetraMobile() {
+	var somenteLetraMobile = false;
+
+	letraDigitadaMobile = prompt("Por favor, digite uma letra");
+	if (letraDigitadaMobile.length > 1) {
+		alert("Por favor, digite apenas uma letra");
+	} else if (/^[a-zA-Z]+$/.test(letraDigitadaMobile) == false) {
+		alert("Por favor, digite apenas uma letra. Nada de números ou caracteres especiais");
+	} else {
+		somenteLetraMobile = true;
+		return letraDigitadaMobile;
+	}
+	
+	if (letraDigitadaMobile ==! undefined){
+		reconheceTecladoMobile(letraDigitadaMobile);
 	}
 }
 
@@ -339,14 +361,17 @@ var converter = convertePalavraEmCodigo();
 var achou = false;
 var letraRepetida = false;
 var fimDeJogo = false;
+var somenteLetraMobile = false;
 var letrasDigitadas = [];
 var numeroDeAcertos = 0;
 var numeroDeErros = 0;
 var numeroDeLetrasDigitadas = 0;
 
+var botaoTeclado = document.querySelector("#digitarLetra");
 var botaoNovoJogo = document.querySelector("#novoJogo");
 var botaoDesistir = document.querySelector("#desistir");
 
+botaoTeclado.onclick = digitarLetraMobile;
 botaoDesistir.onclick = desistir;
 botaoNovoJogo.onclick = limpaForca;
 
