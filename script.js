@@ -151,23 +151,33 @@ function convertePalavraEmCodigo() {
 	}
 }
 
+/* Já funciona detectar se é uma letra só ou não e td mais. Falta só enviar isso para uma simulação do teclado.
 function digitarLetraMobile() {
 	var somenteLetraMobile = false;
 
 	letraDigitadaMobile = prompt("Por favor, digite uma letra");
+	
 	if (letraDigitadaMobile.length > 1) {
 		alert("Por favor, digite apenas uma letra");
 	} else if (/^[a-zA-Z]+$/.test(letraDigitadaMobile) == false) {
 		alert("Por favor, digite apenas uma letra. Nada de números ou caracteres especiais");
 	} else {
-		somenteLetraMobile = true;
-		return letraDigitadaMobile;
+	somenteLetraMobile = true;
+	
 	}
 	
-	if (letraDigitadaMobile ==! undefined){
-		reconheceTecladoMobile(letraDigitadaMobile);
+	if (somenteLetraMobile) {
+		
+		for (var posicao = 0; posicao <= codigoTeclado.length; posicao++) {
+			if (letraDigitadaMobile.toLowerCase() == alfabeto[posicao]) {
+				var letraPrompt = jQuery.Event("keydown");
+				letraPrompt.which = codigoTeclado[posicao];
+				$("#inputBox").trigger(letraPrompt);
+			}
+		}
 	}
-}
+
+}*/
 
 function desenhaLetrasAcertos(evento) {
 	var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
