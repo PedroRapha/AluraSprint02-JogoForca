@@ -151,13 +151,15 @@ function convertePalavraEmCodigo() {
 	}
 }
 
-/* Já funciona detectar se é uma letra só ou não e td mais. Falta só enviar isso para uma simulação do teclado.
+/* Já funciona detectar se é uma letra só ou não e td mais. Falta só enviar isso para uma simulação do teclado.*/
 function digitarLetraMobile() {
 	var somenteLetraMobile = false;
 
-	letraDigitadaMobile = prompt("Por favor, digite uma letra");
+	letraDigitadaMobile = inputLetra.value;
 	
-	if (letraDigitadaMobile.length > 1) {
+	if (letraDigitadaMobile=="") {
+		alert("Por favor, digite uma letra")
+	} else if (letraDigitadaMobile.length > 1) {
 		alert("Por favor, digite apenas uma letra");
 	} else if (/^[a-zA-Z]+$/.test(letraDigitadaMobile) == false) {
 		alert("Por favor, digite apenas uma letra. Nada de números ou caracteres especiais");
@@ -170,14 +172,27 @@ function digitarLetraMobile() {
 		
 		for (var posicao = 0; posicao <= codigoTeclado.length; posicao++) {
 			if (letraDigitadaMobile.toLowerCase() == alfabeto[posicao]) {
-				var letraPrompt = jQuery.Event("keydown");
-				letraPrompt.which = codigoTeclado[posicao];
-				$("#inputBox").trigger(letraPrompt);
+				var keyboardEvent = document.createEvent('KeyboardEvent');
+				var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
+
+				keyboardEvent[initMethod](
+				'keydown', // event type: keydown, keyup, keypress
+				true, // bubbles
+				true, // cancelable
+				window, // view: should be window
+				false, // ctrlKey
+				false, // altKey
+				false, // shiftKey
+				false, // metaKey
+				codigoTeclado[posicao], // keyCode: unsigned long - the virtual key code, else 0
+				0, // charCode: unsigned long - the Unicode character associated with the depressed key, else 0
+				);
+				document.dispatchEvent(keyboardEvent);
 			}
 		}
 	}
 
-}*/
+}
 
 function desenhaLetrasAcertos(evento) {
 	var comecoTraco = (480 - (palavraSorteada.length*50 + (palavraSorteada.length-1)*10))/2 + 10;
@@ -377,11 +392,12 @@ var numeroDeAcertos = 0;
 var numeroDeErros = 0;
 var numeroDeLetrasDigitadas = 0;
 
-var botaoTeclado = document.querySelector("#digitarLetra");
+var inputLetra = document.querySelector("#inputLetra")
+var botaoConfirmarLetra = document.querySelector("#confirmarLetra");
 var botaoNovoJogo = document.querySelector("#novoJogo");
 var botaoDesistir = document.querySelector("#desistir");
 
-botaoTeclado.onclick = digitarLetraMobile;
+botaoConfirmarLetra.onclick = digitarLetraMobile;
 botaoDesistir.onclick = desistir;
 botaoNovoJogo.onclick = limpaForca;
 

@@ -196,18 +196,30 @@ textarea {
 	order: -1;
 }
 
-#digitarLetra {
+/* mexer nisso daqui embaixo quando eu aprender mais de javascript para fazer essa funcionabilidade no mobile*/
+
+#inputLetra {
+	display: none;
+	border-radius: 1em;
+	padding: 1em;
+	width: 23.25vw;
+	height: 1.5em;
+	min-width: 15em;
+	border-color: #D8DFE8;
+}
+
+#confirmarLetra {
 	display: none;
 	background-color: #D8DFE8;
 	color: #0A3871;
 }
 
-#digitarLetra:hover {
+#confirmarLetra:hover {
 	background: #E5E5E5;
 	cursor: pointer;
 }
 
-#digitarLetra:active {
+#confirmarLetra:active {
 	background: white;
 	box-shadow: inset 3px 3px 0 2px #E5E5E5;
 	cursor: pointer;
